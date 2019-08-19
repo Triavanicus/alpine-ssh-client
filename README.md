@@ -13,7 +13,7 @@ deploy_staging:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - echo "$SSH_PRIVATE_KEY_STAGING" > ~/.ssh/id_rsa
+    - mv "$SSH_PRIVATE_KEY_STAGING" ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - scp -r deploy/app_staging/. $DEPLOY_STAGING_SSH_HOST:~/app
     - scp -r src/project/conf/. $DEPLOY_STAGING_SSH_HOST:~/app/conf
